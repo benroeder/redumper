@@ -480,7 +480,11 @@ export struct TOC
             auto &pack_data = descriptors[i];
 
             if(pack_data.extension_flag)
+            {
+                // Skip extension packs, they're handled as part of the main pack
+                ++i;
                 continue;
+            }
 
             auto pack_type = (PackType)pack_data.pack_type;
             if(isTextPack(pack_type))
